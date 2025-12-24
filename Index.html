@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* ===== CSS VARIABLES & GLOBAL RESET ===== */
         :root {
             --primary-blue: #1A3A5F;
             --dark-blue: #0A1F3A;
@@ -46,7 +45,6 @@
             background-color: var(--light-gray);
         }
 
-        /* ===== TYPOGRAPHY ENHANCEMENTS ===== */
         h1 {
             font-size: 3.5rem;
             font-weight: 700;
@@ -94,7 +92,6 @@
             margin-bottom: 1.5rem;
         }
 
-        /* ===== ENHANCED BUTTON STYLES ===== */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -156,7 +153,6 @@
             transform: translateX(4px);
         }
 
-        /* ===== SECTION CONTAINER ===== */
         .section {
             padding: 6rem 2rem;
             position: relative;
@@ -168,7 +164,7 @@
             position: relative;
         }
 
-        /* ===== ENHANCED NAVBAR ===== */
+        /* ENHANCED NAVBAR */
         .navbar {
             position: fixed;
             top: 0;
@@ -189,15 +185,25 @@
 
         .nav-container {
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 2px;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
             gap: 2.5rem;
-            text-align: right;
+            align-items: center;
         }
 
         .nav-links li {
@@ -233,7 +239,139 @@
             width: 100%;
         }
 
-        /* ===== ENHANCED HERO SECTION ===== */
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            margin-left: 1rem;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+            text-transform: uppercase;
+        }
+
+        .lang-btn:hover {
+            background: var(--orange-accent);
+            border-color: var(--orange-accent);
+            transform: translateY(-2px);
+        }
+
+        .lang-btn.active {
+            background: var(--orange-accent);
+            border-color: var(--orange-accent);
+        }
+        .lang-select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            padding: 8px 32px 8px 12px;
+            font-size: 14px;
+            font-weight: 500;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        .lang-select:hover {
+            background: rgba(255, 123, 74, 0.2);
+            border-color: var(--orange-accent);
+        }
+
+        .lang-select:focus {
+            border-color: var(--orange-accent);
+            box-shadow: 0 0 0 3px rgba(255, 123, 74, 0.1);
+        }
+
+        /* Language switcher wrapper */
+        .lang-switcher {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .lang-switcher::after {
+            content: '▼';
+            position: absolute;
+            right: 12px;
+            color: white;
+            font-size: 10px;
+            pointer-events: none;
+        }
+        /* Mobile Toggle */
+        .mobile-toggle {
+            display: none;
+            color: var(--white);
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 1001;
+            transition: var(--transition-smooth);
+        }
+
+        .mobile-toggle:hover {
+            color: var(--orange-accent);
+        }
+
+        /* Mobile Menu */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                max-width: 300px;
+                background: var(--gradient-blue);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 5rem 2rem 2rem;
+                gap: 1.5rem;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.3rem;
+                width: 100%;
+                padding: 0.8rem 0;
+            }
+
+            .lang-switcher {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+
+            .navbar {
+                padding: 1rem 1.5rem;
+            }
+
+            .navbar.scrolled {
+                padding: 0.8rem 1.5rem;
+            }
+        }
+
+        /* HERO SECTION */
         .hero {
             position: relative;
             height: 100vh;
@@ -261,23 +399,8 @@
         }
 
         .hero:hover .hero-background {
-            transform: scale(1.03);/*1.05*/
+            transform: scale(1.03);
         }
-
-        /*.hero-overlay {*/
-        /*    position: absolute;*/
-        /*    top: 0;*/
-        /*    left: 0;*/
-        /*    width: 100%;*/
-        /*    height: 100%;*/
-        /*    background: linear-gradient(*/
-        /*            135deg,*/
-        /*            rgba(10, 31, 58, 0.85) 0%,*/
-        /*            rgba(26, 58, 95, 0.7) 50%,*/
-        /*            rgba(26, 58, 95, 0.85) 100%*/
-        /*    );*/
-        /*    z-index: -1;*/
-        /*}*/
 
         .hero-content {
             position: relative;
@@ -313,7 +436,7 @@
             font-weight: 600;
         }
 
-        /* ===== ENHANCED ABOUT US SECTION ===== */
+        /* ABOUT SECTION */
         .about {
             background-color: var(--white);
             position: relative;
@@ -380,9 +503,58 @@
             color: var(--primary-blue);
         }
 
-        /* ===== ENHANCED EVENTS SECTION ===== */
-        .events {
+        /* SERVICES SECTION */
+        .services {
             background-color: var(--light-gray);
+            position: relative;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-subtle);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-blue);
+            transition: height 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .service-card:hover:before {
+            height: 8px;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--orange-accent);
+            margin-bottom: 1.5rem;
+        }
+
+        /* EVENTS SECTION */
+        .events {
+            background-color: var(--white);
             position: relative;
         }
 
@@ -395,7 +567,7 @@
 
         .past-events, .upcoming-events {
             padding: 2.5rem;
-            background: var(--white);
+            background: var(--light-gray);
             border-radius: 16px;
             box-shadow: var(--shadow-subtle);
             transition: var(--transition-smooth);
@@ -525,7 +697,7 @@
             font-size: 1.05rem;
             font-family: inherit;
             transition: var(--transition-smooth);
-            background: var(--light-gray);
+            background: var(--white);
         }
 
         .form-group input:focus,
@@ -534,11 +706,6 @@
             border-color: var(--orange-accent);
             background: var(--white);
             box-shadow: 0 0 0 3px rgba(255, 123, 74, 0.2);
-        }
-
-        .form-group input:focus + label,
-        .form-group textarea:focus + label {
-            color: var(--orange-accent);
         }
 
         .form-note {
@@ -550,9 +717,9 @@
             padding-left: 1rem;
         }
 
-        /* ===== ENHANCED CONTACT SECTION ===== */
+        /* CONTACT SECTION */
         .contact {
-            background-color: var(--white);
+            background-color: var(--light-gray);
             position: relative;
         }
 
@@ -577,7 +744,7 @@
         }
 
         .contact-form {
-            background: var(--light-gray);
+            background: var(--white);
             padding: 3rem;
             border-radius: 16px;
             box-shadow: var(--shadow-subtle);
@@ -627,7 +794,7 @@
             z-index: 1;
         }
 
-        /* ===== ENHANCED FOOTER ===== */
+        /* FOOTER */
         footer {
             background: var(--gradient-blue);
             color: var(--white);
@@ -653,7 +820,7 @@
             opacity: 0.9;
         }
 
-        /* ===== SUCCESS MESSAGE ANIMATION ===== */
+        /* SUCCESS MESSAGE */
         .success-message {
             display: none;
             padding: 1.2rem;
@@ -673,104 +840,7 @@
             opacity: 1;
         }
 
-        /* ===== RESPONSIVE DESIGN ===== */
-        @media (max-width: 1024px) {
-            h1 {
-                font-size: 3rem;
-            }
-
-            h2 {
-                font-size: 2.4rem;
-            }
-
-            .events-grid {
-                gap: 2.5rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            h3 {
-                font-size: 1.6rem;
-            }
-
-            p {
-                font-size: 1.1rem;
-            }
-
-            .section {
-                padding: 4rem 1.5rem;
-            }
-
-            .hero-tagline {
-                font-size: 1.4rem;
-            }
-
-            .events-grid {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-
-            .events-gallery {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .btn {
-                padding: 1rem 2.2rem;
-                font-size: 1rem;
-            }
-
-            .contact-form {
-                padding: 2rem;
-            }
-
-            .about-features {
-                flex-direction: column;
-            }
-
-            .navbar {
-                padding: 1rem 1.5rem;
-            }
-
-            .nav-links {
-                gap: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero-tagline {
-                font-size: 1.2rem;
-            }
-
-            .events-gallery {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-content {
-                padding: 0 1.5rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-            }
-
-            .nav-links a {
-                font-size: 1rem;
-            }
-        }
-
-        /* ===== SCROLL PROGRESS INDICATOR ===== */
+        /* SCROLL PROGRESS */
         .scroll-progress {
             position: fixed;
             top: 0;
@@ -781,132 +851,247 @@
             z-index: 1001;
             transition: width 0.1s ease;
         }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 1024px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.4rem; }
+            .events-grid { gap: 2.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.6rem; }
+            p { font-size: 1.1rem; }
+            .section { padding: 4rem 1.5rem; }
+            .hero-tagline { font-size: 1.4rem; }
+            .events-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .events-gallery { grid-template-columns: repeat(2, 1fr); }
+            .btn { padding: 1rem 2.2rem; font-size: 1rem; }
+            .contact-form { padding: 2rem; }
+            .about-features { flex-direction: column; }
+            .hero-content { padding: 0 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.2rem; }
+            .hero-tagline { font-size: 1.2rem; }
+            .events-gallery { grid-template-columns: 1fr; }
+        }
+
+        /* Flag version styles */
+        .select-wrapper.with-flags {
+            position: relative;
+        }
+
+        .select-wrapper.with-flags .lang-select {
+            opacity: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+
+        .selected-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 32px 8px 12px;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .selected-option .flag {
+            font-size: 16px;
+        }
+
+        .select-wrapper.with-flags .select-arrow {
+            z-index: 1;
+        }
+
+
+
+        /* Mobile responsive for language select */
+        @media (max-width: 768px) {
+            .lang-select {
+                min-width: 100px;
+                padding: 6px 28px 6px 10px;
+                font-size: 13px;
+            }
+
+            .lang-switcher::after {
+                right: 10px;
+            }
+        }
+
+        /* RTL support for Arabic */
+        [lang="ar"] {
+            direction: rtl;
+            text-align: right;
+        }
+
+        [lang="ar"] .lang-select {
+            padding: 8px 12px 8px 32px;
+        }
+
+        [lang="ar"] .lang-switcher::after {
+            right: auto;
+            left: 12px;
+        }
+
+        /* Success message animation */
+        .success-message {
+            display: none;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .success-message.show {
+            display: block;
+            transform: translateY(0);
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
-<!-- Scroll Progress Indicator -->
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- ===== NAVBAR SECTION ===== -->
 <nav class="navbar" id="navbar">
     <div class="nav-container">
-<!--        <ul class="nav-links">-->
-<!--            <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>-->
-<!--            <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>-->
-<!--            <li><a href="#events"><i class="fas fa-calendar-alt"></i> Events</a></li>-->
-<!--            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>-->
-<!--        </ul>-->
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#events">Events</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="mobile-toggle" id="mobileToggle">
-                    <i class="fas fa-bars"></i>
+        <a href="#home" class="nav-brand"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" data-translate="nav_home">Accueil</a></li>
+            <li><a href="#about" data-translate="nav_about">À Propos</a></li>
+            <li><a href="#services" data-translate="nav_services">Services</a></li>
+            <li><a href="#events" data-translate="nav_events">Événements</a></li>
+            <li><a href="#contact" data-translate="nav_contact">Contact</a></li>
+            <li class="lang-switcher">
+                <div class="select-wrapper with-flags">
+                    <select class="lang-select" id="langSelect">
+                        <option value="fr" selected>Français</option>
+                        <option value="en">English</option>
+                        <option value="ar">العربية</option>
+                        <option value="es">Español</option>
+                    </select>
                 </div>
+            </li>
+        </ul>
+        <div class="mobile-toggle" id="mobileToggle">
+            <i class="fas fa-bars"></i>
+        </div>
     </div>
 </nav>
 
-<!-- ===== HERO SECTION ===== -->
 <section class="hero" id="home">
     <div class="hero-background"></div>
-    <div class="hero-overlay"></div>
     <div class="hero-content">
-<!--        <h1>ELD</h1>-->
         <p class="hero-tagline">
-            <span class="hero-highlight">Accompagner, sécuriser, former</span> :
-            Votre partenaire de confiance pour la formation, l’audit et l’accompagnement en gestion des risques.        </p>
-        <a href="#contact" class="btn">
-            Contactez-nous
-<!--            <i class="fas fa-arrow-right"></i>-->
-        </a>
+            <span class="hero-highlight" data-translate="hero_highlight">Accompagner, sécuriser, former</span>
+            <span data-translate="hero_text"> : Votre partenaire de confiance pour la formation, l'audit et l'accompagnement en gestion des risques.</span>
+        </p>
+        <a href="#contact" class="btn" data-translate="hero_cta">Contactez-nous</a>
     </div>
 </section>
 
-<!-- ===== ABOUT US SECTION ===== -->
 <section class="section about" id="about">
     <div class="container">
         <div class="about-content">
-            <h2>À Propos de Nous</h2>
-            <p>
+            <h2 data-translate="about_title">À Propos de Nous</h2>
+            <p data-translate="about_text">
                 ELD est une startup dynamique dédiée aux solutions complètes de gestion des risques et d'assurance.
                 Nous accompagnons nos clients à chaque étape de leur parcours, sécurisons leurs actifs les plus précieux
                 et fournissons une formation experte pour les habiliter à gérer efficacement les risques. En tant que partenaire fiable,
                 nous combinons expertise professionnelle et service personnalisé pour offrir tranquillité d'esprit et protection durable.
             </p>
-
-<!--            Services Sections-->
-<!--            <div class="about-features">-->
-<!--                <div class="feature">-->
-<!--                    <h4><i class="fas fa-user-shield"></i> Accompagnement Personnalisé</h4>-->
-<!--                    <p>Un suivi sur mesure pour chaque client, adapté à vos besoins spécifiques.</p>-->
-<!--                </div>-->
-<!--                <div class="feature">-->
-<!--                    <h4><i class="fas fa-shield-alt"></i> Sécurité Maximale</h4>-->
-<!--                    <p>Protection optimale de vos actifs avec des solutions innovantes et fiables.</p>-->
-<!--                </div>-->
-<!--                <div class="feature">-->
-<!--                    <h4><i class="fas fa-graduation-cap"></i> Formation Expertise</h4>-->
-<!--                    <p>Programmes de formation conçus pour renforcer vos compétences en gestion des risques.</p>-->
-<!--                </div>-->
-<!--            </div>-->
         </div>
     </div>
 </section>
 
-<!-- ===== EVENTS SECTION ===== -->
+<section class="section services" id="services">
+    <div class="container">
+        <h2 style="text-align: center;" data-translate="services_title">Nos Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-user-shield"></i></div>
+                <h3 data-translate="service1_title">Accompagnement Personnalisé</h3>
+                <p data-translate="service1_text">Un suivi sur mesure pour chaque client, adapté à vos besoins spécifiques.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3 data-translate="service2_title">Sécurité Maximale</h3>
+                <p data-translate="service2_text">Protection optimale de vos actifs avec des solutions innovantes et fiables.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+                <h3 data-translate="service3_title">Formation Expertise</h3>
+                <p data-translate="service3_text">Programmes de formation conçus pour renforcer vos compétences en gestion des risques.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="section events" id="events">
     <div class="container">
-        <h2 style="text-align: center;">Nos Événements</h2>
+        <h2 style="text-align: center;" data-translate="events_title">Nos Événements</h2>
         <div class="events-grid">
-            <!-- PAST EVENTS (LEFT COLUMN) -->
             <div class="past-events">
-                <h3>Événements Passés</h3>
+                <h3 data-translate="past_events_title">Événements Passés</h3>
                 <div class="events-gallery">
                     <div class="event-box">
-                        <img src="https://picsum.photos/400/300?random=1&blur=1" alt="Formation assurance événement passée">
+                        <img src="https://picsum.photos/400/300?random=1&blur=1" alt="Event 1">
                     </div>
                     <div class="event-box">
-                        <img src="https://picsum.photos/400/300?random=2&blur=1" alt="Atelier gestion des risques">
+                        <img src="https://picsum.photos/400/300?random=2&blur=1" alt="Event 2">
                     </div>
                     <div class="event-box">
-                        <img src="https://picsum.photos/400/300?random=3&blur=1" alt="Événement networking professionnel">
+                        <img src="https://picsum.photos/400/300?random=3&blur=1" alt="Event 3">
                     </div>
                     <div class="event-box">
-                        <img src="https://picsum.photos/400/300?random=4&blur=1" alt="Conférence précédente du secteur">
+                        <img src="https://picsum.photos/400/300?random=4&blur=1" alt="Event 4">
                     </div>
                 </div>
                 <a href="#" class="gallery-link">
-                    Voir la galerie complète <i class="fas fa-arrow-right"></i>
+                    <span data-translate="view_gallery">Voir la galerie complète</span>
+                    <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
 
-            <!-- UPCOMING EVENTS (RIGHT COLUMN) -->
             <div class="upcoming-events">
-                <h3>Restez Informés</h3>
-                <p>
+                <h3 data-translate="stay_informed">Restez Informés</h3>
+                <p data-translate="events_description">
                     ELD organise régulièrement des sessions de formation, des événements de networking et des ateliers éducatifs
                     conçus pour vous maintenir à la pointe des meilleures pratiques en gestion des risques et assurance.
                 </p>
 
                 <form class="subscription-form" id="subscriptionForm">
                     <div class="success-message" id="subscribeSuccess">
-                        <i class="fas fa-check-circle"></i> Merci pour votre inscription ! Nous vous tiendrons informés de nos événements.
+                        <i class="fas fa-check-circle"></i> <span data-translate="subscribe_success">Merci pour votre inscription !</span>
                     </div>
                     <div class="form-group">
-                        <label for="sub-name">Nom</label>
+                        <label for="sub-name" data-translate="form_name">Nom</label>
                         <input type="text" id="sub-name" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="sub-email">Email</label>
+                        <label for="sub-email" data-translate="form_email">Email</label>
                         <input type="email" id="sub-email" name="email" required>
                     </div>
                     <button type="submit" class="btn btn-secondary" style="width: 100%;">
-                        <i class="fas fa-paper-plane"></i> S'abonner
+                        <i class="fas fa-paper-plane"></i> <span data-translate="subscribe_btn">S'abonner</span>
                     </button>
-                    <p class="form-note">
+                    <p class="form-note" data-translate="form_note">
                         Les invitations et inscriptions sont gérées via nos Google Forms sécurisés.
                     </p>
                 </form>
@@ -915,13 +1100,12 @@
     </div>
 </section>
 
-<!-- ===== CONTACT & COLLABORATION SECTION ===== -->
 <section class="section contact" id="contact">
     <div class="container">
         <div class="contact-content">
             <div class="contact-intro">
-                <h2>Contact & Collaboration</h2>
-                <p>
+                <h2 data-translate="contact_title">Contact & Collaboration</h2>
+                <p data-translate="contact_intro">
                     Nous serions ravis d'avoir de vos nouvelles. Que vous ayez des questions sur nos services,
                     besoin de conseils d'experts ou que vous souhaitiez explorer des opportunités de partenariat,
                     nous sommes là pour vous aider.
@@ -930,50 +1114,291 @@
 
             <form class="contact-form" id="contactForm">
                 <div class="success-message" id="contactSuccess">
-                    <i class="fas fa-check-circle"></i> Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.
+                    <i class="fas fa-check-circle"></i> <span data-translate="contact_success">Merci pour votre message !</span>
                 </div>
                 <div class="form-group">
-                    <label for="name">Nom</label>
+                    <label for="name" data-translate="form_name">Nom</label>
                     <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email" data-translate="form_email">Email</label>
                     <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="message">Message</label>
+                    <label for="message" data-translate="form_message">Message</label>
                     <textarea id="message" name="message" required></textarea>
                 </div>
                 <button type="submit" class="btn" style="width: 100%;">
-                    <i class="fas fa-paper-plane"></i> Envoyer le message
+                    <i class="fas fa-paper-plane"></i> <span data-translate="send_btn">Envoyer le message</span>
                 </button>
             </form>
 
             <div class="collaboration-note">
                 <p>
-                    <strong><i class="fas fa-handshake"></i> Intéressé par un partenariat ou co-organisation d'événement ?</strong><br>
-                    Nous serions ravis d'explorer des collaborations qui créent de la valeur pour nos communautés et clients.
+                    <strong><i class="fas fa-handshake"></i> <span data-translate="collab_title">Intéressé par un partenariat ?</span></strong><br>
+                    <span data-translate="collab_text">Nous serions ravis d'explorer des collaborations qui créent de la valeur pour nos communautés et clients.</span>
                 </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
 <footer>
     <div class="container">
-        <p>&copy; 2024 AdIoT.</p>
+
+        <a href="https://www.linkedin.com/company/eld-risk-consulting" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:o.dahmani@riskconsulting.ma" title="Email"><i class="fas fa-envelope"></i></a>
         <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.7;">
             <i class="fas fa-map-marker-alt"></i> Casablanca, Maroc |
             <i class="fas fa-phone"></i> +212666137700 |
             <i class="fas fa-envelope"></i> contact@riskconsulting.ma
+        <p class="footer-text">&copy;  Generated by AdIoT</p>
+<!--        <p>&copy; 2024 ELD. <span data-translate="footer_rights">Tous droits réservés.</span></p>-->
         </p>
     </div>
 </footer>
 
-<!-- ===== ENHANCED JAVASCRIPT ===== -->
 <script>
-    // Smooth scrolling for anchor links with offset for fixed navbar
+    // ===== TRANSLATION DATA =====
+    const translations = {
+        fr: {
+            nav_home: "Accueil",
+            nav_about: "À Propos",
+            nav_services: "Services",
+            nav_events: "Événements",
+            nav_contact: "Contact",
+            hero_highlight: "Accompagner, sécuriser, former",
+            hero_text: " : Votre partenaire de confiance pour la formation, l'audit et l'accompagnement en gestion des risques.",
+            hero_cta: "Contactez-nous",
+            about_title: "À Propos de Nous",
+            about_text: "ELD est une startup dynamique dédiée aux solutions complètes de gestion des risques et d'assurance. Nous accompagnons nos clients à chaque étape de leur parcours, sécurisons leurs actifs les plus précieux et fournissons une formation experte pour les habiliter à gérer efficacement les risques. En tant que partenaire fiable, nous combinons expertise professionnelle et service personnalisé pour offrir tranquillité d'esprit et protection durable.",
+            services_title: "Nos Services",
+            service1_title: "Accompagnement Personnalisé",
+            service1_text: "Un suivi sur mesure pour chaque client, adapté à vos besoins spécifiques.",
+            service2_title: "Sécurité Maximale",
+            service2_text: "Protection optimale de vos actifs avec des solutions innovantes et fiables.",
+            service3_title: "Formation Expertise",
+            service3_text: "Programmes de formation conçus pour renforcer vos compétences en gestion des risques.",
+            events_title: "Nos Événements",
+            past_events_title: "Événements Passés",
+            view_gallery: "Voir la galerie complète",
+            stay_informed: "Restez Informés",
+            events_description: "ELD organise régulièrement des sessions de formation, des événements de networking et des ateliers éducatifs conçus pour vous maintenir à la pointe des meilleures pratiques en gestion des risques et assurance.",
+            subscribe_success: "Merci pour votre inscription ! Nous vous tiendrons informés.",
+            form_name: "Nom",
+            form_email: "Email",
+            form_message: "Message",
+            subscribe_btn: "S'abonner",
+            send_btn: "Envoyer le message",
+            form_note: "Les invitations et inscriptions sont gérées via nos Google Forms sécurisés.",
+            contact_title: "Contact & Collaboration",
+            contact_intro: "Nous serions ravis d'avoir de vos nouvelles. Que vous ayez des questions sur nos services, besoin de conseils d'experts ou que vous souhaitiez explorer des opportunités de partenariat, nous sommes là pour vous aider.",
+            contact_success: "Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.",
+            collab_title: "Intéressé par un partenariat ?",
+            collab_text: "Nous serions ravis d'explorer des collaborations qui créent de la valeur pour nos communautés et clients.",
+            footer_rights: "Tous droits réservés."
+        },
+        en: {
+            nav_home: "Home",
+            nav_about: "About",
+            nav_services: "Services",
+            nav_events: "Events",
+            nav_contact: "Contact",
+            hero_highlight: "Support, Secure, Train",
+            hero_text: " : Your trusted partner for training, auditing and risk management support.",
+            hero_cta: "Contact Us",
+            about_title: "About Us",
+            about_text: "ELD is a dynamic startup dedicated to comprehensive risk management and insurance solutions. We support our clients at every step of their journey, secure their most valuable assets, and provide expert training to empower them to manage risks effectively. As a trusted partner, we combine professional expertise with personalized service to deliver peace of mind and lasting protection.",
+            services_title: "Our Services",
+            service1_title: "Personalized Support",
+            service1_text: "Tailored follow-up for each client, adapted to your specific needs.",
+            service2_title: "Maximum Security",
+            service2_text: "Optimal protection of your assets with innovative and reliable solutions.",
+            service3_title: "Expert Training",
+            service3_text: "Training programs designed to strengthen your risk management skills.",
+            events_title: "Our Events",
+            past_events_title: "Past Events",
+            view_gallery: "View full gallery",
+            stay_informed: "Stay Informed",
+            events_description: "ELD regularly organizes training sessions, networking events and educational workshops designed to keep you at the forefront of risk management and insurance best practices.",
+            subscribe_success: "Thank you for subscribing! We'll keep you informed.",
+            form_name: "Name",
+            form_email: "Email",
+            form_message: "Message",
+            subscribe_btn: "Subscribe",
+            send_btn: "Send Message",
+            form_note: "Invitations and registrations are managed via our secure Google Forms.",
+            contact_title: "Contact & Collaboration",
+            contact_intro: "We would love to hear from you. Whether you have questions about our services, need expert advice, or want to explore partnership opportunities, we're here to help.",
+            contact_success: "Thank you for your message! We'll respond as soon as possible.",
+            collab_title: "Interested in a partnership?",
+            collab_text: "We would love to explore collaborations that create value for our communities and clients.",
+            footer_rights: "All rights reserved."
+        },
+        ar: {
+            nav_home: "الرئيسية",
+            nav_about: "من نحن",
+            nav_services: "الخدمات",
+            nav_events: "الفعاليات",
+            nav_contact: "اتصل بنا",
+            hero_highlight: "مرافقة، تأمين، تدريب",
+            hero_text: " : شريكك الموثوق للتدريب والتدقيق والدعم في إدارة المخاطر.",
+            hero_cta: "اتصل بنا",
+            about_title: "من نحن",
+            about_text: "ELD هي شركة ناشئة ديناميكية مخصصة لحلول إدارة المخاطر والتأمين الشاملة. نرافق عملاءنا في كل مرحلة من رحلتهم، ونؤمن أصولهم الأكثر قيمة، ونقدم تدريبًا احترافيًا لتمكينهم من إدارة المخاطر بفعالية. كشريك موثوق، نجمع بين الخبرة المهنية والخدمة الشخصية لتقديم راحة البال والحماية الدائمة.",
+            services_title: "خدماتنا",
+            service1_title: "دعم شخصي",
+            service1_text: "متابعة مخصصة لكل عميل، تتكيف مع احتياجاتك المحددة.",
+            service2_title: "أقصى درجات الأمان",
+            service2_text: "حماية مثلى لأصولك بحلول مبتكرة وموثوقة.",
+            service3_title: "تدريب احترافي",
+            service3_text: "برامج تدريبية مصممة لتعزيز مهاراتك في إدارة المخاطر.",
+            events_title: "فعالياتنا",
+            past_events_title: "الفعاليات السابقة",
+            view_gallery: "عرض المعرض الكامل",
+            stay_informed: "ابق على اطلاع",
+            events_description: "تنظم ELD بانتظام دورات تدريبية وفعاليات تواصل وورش عمل تعليمية مصممة لإبقائك في طليعة أفضل الممارسات في إدارة المخاطر والتأمين.",
+            subscribe_success: "شكرا لتسجيلك! سنبقيك على اطلاع.",
+            form_name: "الاسم",
+            form_email: "البريد الإلكتروني",
+            form_message: "الرسالة",
+            subscribe_btn: "اشترك",
+            send_btn: "إرسال الرسالة",
+            form_note: "تتم إدارة الدعوات والتسجيلات عبر نماذج Google الآمنة الخاصة بنا.",
+            contact_title: "الاتصال والتعاون",
+            contact_intro: "يسعدنا أن نسمع منك. سواء كانت لديك أسئلة حول خدماتنا، أو تحتاج إلى نصيحة خبير، أو ترغب في استكشاف فرص الشراكة، نحن هنا للمساعدة.",
+            contact_success: "شكرا لرسالتك! سنرد في أقرب وقت ممكن.",
+            collab_title: "مهتم بالشراكة؟",
+            collab_text: "يسعدنا استكشاف التعاون الذي يخلق قيمة لمجتمعاتنا وعملائنا.",
+            footer_rights: "جميع الحقوق محفوظة."
+        },
+        es: {
+            nav_home: "Inicio",
+            nav_about: "Sobre Nosotros",
+            nav_services: "Servicios",
+            nav_events: "Eventos",
+            nav_contact: "Contacto",
+            hero_highlight: "Acompañar, Asegurar, Formar",
+            hero_text: " : Su socio de confianza para formación, auditoría y apoyo en gestión de riesgos.",
+            hero_cta: "Contáctenos",
+            about_title: "Sobre Nosotros",
+            about_text: "ELD es una startup dinámica dedicada a soluciones integrales de gestión de riesgos y seguros. Acompañamos a nuestros clientes en cada etapa de su viaje, aseguramos sus activos más valiosos y proporcionamos formación experta para capacitarlos en la gestión efectiva de riesgos. Como socio confiable, combinamos experiencia profesional con servicio personalizado para ofrecer tranquilidad y protección duradera.",
+            services_title: "Nuestros Servicios",
+            service1_title: "Acompañamiento Personalizado",
+            service1_text: "Seguimiento a medida para cada cliente, adaptado a sus necesidades específicas.",
+            service2_title: "Seguridad Máxima",
+            service2_text: "Protección óptima de sus activos con soluciones innovadoras y confiables.",
+            service3_title: "Formación Experta",
+            service3_text: "Programas de formación diseñados para fortalecer sus habilidades en gestión de riesgos.",
+            events_title: "Nuestros Eventos",
+            past_events_title: "Eventos Pasados",
+            view_gallery: "Ver galería completa",
+            stay_informed: "Manténgase Informado",
+            events_description: "ELD organiza regularmente sesiones de formación, eventos de networking y talleres educativos diseñados para mantenerlo a la vanguardia de las mejores prácticas en gestión de riesgos y seguros.",
+            subscribe_success: "¡Gracias por suscribirse! Le mantendremos informado.",
+            form_name: "Nombre",
+            form_email: "Email",
+            form_message: "Mensaje",
+            subscribe_btn: "Suscribirse",
+            send_btn: "Enviar Mensaje",
+            form_note: "Las invitaciones y registros se gestionan a través de nuestros formularios seguros de Google.",
+            contact_title: "Contacto y Colaboración",
+            contact_intro: "Nos encantaría saber de usted. Ya sea que tenga preguntas sobre nuestros servicios, necesite asesoramiento experto o desee explorar oportunidades de asociación, estamos aquí para ayudar.",
+            contact_success: "¡Gracias por su mensaje! Responderemos lo antes posible.",
+            collab_title: "¿Interesado en una asociación?",
+            collab_text: "Nos encantaría explorar colaboraciones que creen valor para nuestras comunidades y clientes.",
+            footer_rights: "Todos los derechos reservados."
+        }
+    };
+
+    // ===== LANGUAGE SWITCHER =====
+    let currentLang = 'fr';
+
+    function translatePage(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang;
+
+        // Handle RTL for Arabic
+        if (lang === 'ar') {
+            document.body.style.direction = 'rtl';
+        } else {
+            document.body.style.direction = 'ltr';
+        }
+
+        // Translate all elements
+        document.querySelectorAll('[data-translate]').forEach(element => {
+            const key = element.getAttribute('data-translate');
+            if (translations[lang] && translations[lang][key]) {
+                element.textContent = translations[lang][key];
+            }
+        });
+
+        // Translate all elements
+        document.querySelectorAll('[data-translate]').forEach(element => {
+            const key = element.getAttribute('data-translate');
+            if (translations[lang] && translations[lang][key]) {
+                element.textContent = translations[lang][key];
+            }
+        });
+
+        // Save preference
+        localStorage.setItem('preferredLang', lang);
+    }
+
+    // Initialize language from localStorage or default to French
+    const savedLang = localStorage.getItem('preferredLang') || 'fr';
+    translatePage(savedLang);
+
+    // // Language button listeners
+    // document.querySelectorAll('.lang-btn').forEach(btn => {
+    //     btn.addEventListener('click', () => {
+    //         const lang = btn.getAttribute('data-lang');
+    //         translatePage(lang);
+    //     });
+    // });
+    // Language select listener
+    const langSelect = document.getElementById('langSelect');
+    if (langSelect) {
+        langSelect.addEventListener('change', function() {
+            const lang = this.value;
+            translatePage(lang);
+        });
+    }
+    // ===== MOBILE MENU TOGGLE =====
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (mobileToggle && navLinks) {
+        mobileToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navLinks.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !mobileToggle.contains(e.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+
+    // ===== SMOOTH SCROLLING =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -993,76 +1418,80 @@
         });
     });
 
-    // Navbar scroll effect
+    // ===== NAVBAR SCROLL EFFECT =====
     window.addEventListener('scroll', function() {
         const navbar = document.getElementById('navbar');
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+        if (navbar) {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         }
 
         // Scroll progress indicator
         const scrollProgress = document.getElementById('scrollProgress');
-        const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrolled = (window.scrollY / windowHeight) * 100;
-        scrollProgress.style.width = scrolled + '%';
+        if (scrollProgress) {
+            const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        }
     });
 
-    // Subscription form handler with enhanced feedback
-    document.getElementById('subscriptionForm').addEventListener('submit', function(e) {
-        e.preventDefault();
+    // ===== FORM HANDLERS =====
+    const subscriptionForm = document.getElementById('subscriptionForm');
+    if (subscriptionForm) {
+        subscriptionForm.addEventListener('submit', function(e) {
+            e.preventDefault();
 
-        // Show success message with animation
-        const successMsg = document.getElementById('subscribeSuccess');
-        successMsg.classList.add('show');
+            const successMsg = document.getElementById('subscribeSuccess');
+            if (successMsg) {
+                successMsg.classList.add('show');
+            }
 
-        // Add subtle animation to button
-        const submitBtn = this.querySelector('button[type="submit"]');
-        submitBtn.innerHTML = '<i class="fas fa-check"></i> Inscrit !';
-        submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #2E7D32)';
+            const submitBtn = this.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                const originalHTML = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> ' + (translations[currentLang]?.subscribe_success || 'Subscribed!');
+                submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #2E7D32)';
 
-        // Reset form after delay
-        setTimeout(() => {
-            this.reset();
-            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> S\'abonner';
-            submitBtn.style.background = '';
-        }, 3000);
+                setTimeout(() => {
+                    this.reset();
+                    submitBtn.innerHTML = originalHTML;
+                    submitBtn.style.background = '';
+                    if (successMsg) successMsg.classList.remove('show');
+                }, 3000);
+            }
+        });
+    }
 
-        // Hide success message after 5 seconds
-        setTimeout(() => {
-            successMsg.classList.remove('show');
-        }, 5000);
-    });
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
 
-    // Contact form handler with enhanced feedback
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
+            const successMsg = document.getElementById('contactSuccess');
+            if (successMsg) {
+                successMsg.classList.add('show');
+            }
 
-        // Show success message
-        const successMsg = document.getElementById('contactSuccess');
-        successMsg.classList.add('show');
+            const submitBtn = this.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                const originalHTML = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> ' + (translations[currentLang]?.contact_success || 'Message sent!');
+                submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #2E7D32)';
 
-        // Add subtle animation to button
-        const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
-        submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #2E7D32)';
+                setTimeout(() => {
+                    this.reset();
+                    submitBtn.innerHTML = originalHTML;
+                    submitBtn.style.background = '';
+                    if (successMsg) successMsg.classList.remove('show');
+                }, 3000);
+            }
+        });
+    }
 
-        // Reset form after delay
-        setTimeout(() => {
-            this.reset();
-            submitBtn.innerHTML = originalText;
-            submitBtn.style.background = '';
-        }, 3000);
-
-        // Hide success message after 5 seconds
-        setTimeout(() => {
-            successMsg.classList.remove('show');
-        }, 5000);
-    });
-
-    // Image hover enhancement for event gallery
+    // ===== EVENT GALLERY HOVER EFFECTS =====
     document.querySelectorAll('.event-box').forEach(box => {
         box.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-8px)';
@@ -1075,29 +1504,40 @@
         });
     });
 
-    // Form input focus effects
-    document.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
-        input.addEventListener('focus', function() {
-            this.parentElement.classList.add('focused');
-        });
+    // ===== INTERSECTION OBSERVER FOR ANIMATIONS =====
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
 
-        input.addEventListener('blur', function() {
-            if (this.value === '') {
-                this.parentElement.classList.remove('focused');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
             }
         });
+    }, observerOptions);
+
+    document.querySelectorAll('.service-card, .feature, .event-box').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
     });
 
-    // Initialize animations on page load
-    window.addEventListener('load', function() {
-        document.body.classList.add('loaded');
-
-        // Animate hero content with slight delay
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', function() {
+        // Trigger initial animations
         setTimeout(() => {
-            document.querySelector('.hero-content').style.opacity = '1';
-            document.querySelector('.hero-content').style.transform = 'translateY(0)';
+            document.querySelectorAll('.service-card, .feature, .event-box').forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            });
         }, 300);
     });
+
+
 </script>
 </body>
 </html>
